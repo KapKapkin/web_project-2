@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+{% for item in user %}
+<p>{{user[item]}}</p>
+{% endfor %}
+
+{% for post in posts %}
+<p>{{post.user.name}} | {{post.posts_content}}</p>
+{% for comment in post.comments %}
+{{comment.comments_content}}
+{%endfor%}
+{%endfor%}
+
+{% endblock %}

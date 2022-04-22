@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div id="messages-body" class='messages-body'>
+    <div class="messages-outer"></div>
+    <div class="messages-inner">
+
+        <div class="messages-body-header">
+            <div class="messages-body-name">
+                <p>
+                    {% if dialog['user_one_id'] == current_user.id %}
+                    {{ dialog['user_two']['name'] }}
+                    {% else %}
+                    {{ dialog['user_one']['name'] }}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+        <div id="messages-form" class="messages-slider"></div>
+        <form action="" method="POST" id="message" class="messages-input">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.text.label }}<br>
+                <span class="textarea" id="text" name="text" required type="textarea" contenteditable></span>
+                {% for error in form.text.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+            {% endfor %}
+            </p>
+            <p>{{ form.submit(type="button", class="btn btn-primary", id='message-send-submit') }}</p>
+            {{message}}
+        </form>
+    </div>
+
+
+    <template id="messages-template">
+        <div class="message-container">
+            <p class="right">
+                {% if dialog['user_one_id'] == current_user.id %}
+                {{ dialog['user_one']['name'] }}
+
+                {% else %}
+                {{ dialog['user_two']['name'] }}
+                {% endif %}</p>
+
+            <div id="messages-content"></div>
+            <span class="time-right" id="messages-get-time"></span>
+        </div>
+    </template>
+
+    <template id="own-messages-template">
+        <div class="message-container darker">
+            <p class="right">
+                {% if dialog['user_one_id'] == current_user.id %}
+                {{ dialog['user_two']['name'] }}
+                {% else %}
+                {{ dialog['user_one']['name'] }}
+                {% endif %}
+            </p>
+
+            <div id="messages-content"></div>
+            <span class="time-left" id="messages-get-time"></span>
+        </div>
+    </template>
+
+    <script>
+        showMessages();     
+    </script>
+
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+
+
+    <link href="/static/css/index.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/dal.js"></script>
+    <script type="text/javascript" src="/static/js/ui.js"></script>
+
+
+
+</head>
+
+<body>
+    <div class="container">
+        <header
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/main" class="nav-link px-2 link-secondary">Home</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="/dialogs" class="nav-link px-2 link-dark">Dialogs</a></li>
+                {% else %}
+                <li><a href="/login" class="nav-link px-2 link-dark">Dialogs</a></li>
+                {%endif%}
+            </ul>
+            
+
+            <div class="col-md-3 text-end">
+                {% if current_user.is_authenticated %}
+                <div class="btn-group" role="group">
+                    <a href="/{{current_user.id}}" type="button" class="btn btn-outline-primary me-2">My Page</a>
+                    <a href="/logout" type="button" class="btn btn-primary">Logout</a>
+                </div>
+                {%else%}
+                <div class="btn-group" role="group">
+                    <a href="/login" type="button" class="btn btn-outline-primary me-2">Login</a>
+                    <a href="/register" type="button" class="btn btn-primary">Sign-up</a>
+                </div>
+                {%endif%}
+            </div>
+
+        </header>
+    </div>
+    {%block content %}{% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

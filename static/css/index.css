@@ -1,0 +1,85 @@
+.dialogs-output{
+  max-width: 50%;
+  margin-left:25%;
+}
+.my-3{
+  max-width: 60%;
+  margin-left:20%;
+}
+.textarea {
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1px 6px;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  resize: both;
+  min-height: 40px;
+  line-height: 20px;
+  max-height: 140px;
+  border-color: black;
+}
+.textarea[contenteditable]:empty::before {
+  content: "Placeholder still possible";
+  color: gray;
+}
+.messages-body {
+  min-width: 100%;
+}
+.messages-outer{
+  min-width: 10%;
+  max-width: 25%;
+}
+.messages-inner{
+  margin-left:25%;
+  width:50%;
+}
+.messages-slider{
+  overflow-y: scroll; 
+  height:400px;
+  
+}
+.messages-slider::-webkit-scrollbar {
+  width: 0;
+}
+
+.messages-content {
+  max-width: 30%;
+  word-break: break-all;
+}
+
+.message-container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+/* Clear floats */
+.message-container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Style images */
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+}
